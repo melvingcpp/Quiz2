@@ -33,7 +33,7 @@ int main(){
         if (choice == 1){
             printf("\n================================");
             printf("\nYou have entered choice 1");
-            //printf("pvp working");
+
             //Have a loop that continues to display the board until a winner or tie occurs
             while (playing == 1){
                 pvpgame();
@@ -42,12 +42,10 @@ int main(){
 
                 scanf("%d %d", &move1, &move2);
 
-                //printf("%d, %d", move1, move2);
 
                 if(player % 2 == 1 && board[move1 - 1][move2 - 1] == ' '){
                     board[move1 - 1][move2 - 1] = 'X';
                     printf("\nGood!");
-                    //printf("\n%c", board[move1][move2]);
                     player++;
                 }
                 else if (board[move1 - 1][move2 - 1] == ' '){
