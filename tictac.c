@@ -12,9 +12,10 @@ int main(){
     
     int choice, move1, move2; //holds the players choices and moves
     int player = 1; //keeps track of which player is making a move
+    int tie = 1; // keeps track if there is a tie, 0 = no tie, 1 = tie
 
     //loop continues until user would like to stop playing
-    while (terminate = 1){
+    while (terminate == 1){
         //prompt user for game they wish to play
 
         printf("\n================================");
@@ -43,14 +44,14 @@ int main(){
 
                 //printf("%d, %d", move1, move2);
 
-                if(player % 2 == 1 && board[move1][move2] == ' '){
-                    board[move1][move2] = 'X';
+                if(player % 2 == 1 && board[move1 - 1][move2 - 1] == ' '){
+                    board[move1 - 1][move2 - 1] = 'X';
                     printf("\nGood!");
                     //printf("\n%c", board[move1][move2]);
                     player++;
                 }
-                else if (board[move1][move2] == ' '){
-                    board[move1][move2] = 'O';
+                else if (board[move1 - 1][move2 - 1] == ' '){
+                    board[move1 - 1][move2 - 1] = 'O';
                     printf("\nGood!");
                     player--;
                 }
@@ -73,6 +74,64 @@ int main(){
                         }
                     }
                 }
+
+                for (int i = 0; i < 3; i++){
+                    if (board[0][i] != ' ' && board[1][i] != ' ' && board[2][i] != ' '){
+                        if (board[0][i] == board[1][i] && board[1][i] == board[2][i]){
+                            if (player % 2 == 1){
+                                printf("\nPlayer 2 wins!");
+                                playing = 0;
+                            }
+                            else{
+                                printf("\nPlayer 1 wins!");
+                                playing = 0;
+                            }
+                        }
+                    }
+                }
+
+                if (board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' '){
+                    if (board[0][0] == board[1][1] && board[1][1] == board[2][2]){
+                        if (player % 2 == 1){
+                            printf("\nPlayer 2 wins!");
+                            playing = 0;
+                            }
+                        else{
+                            printf("\nPlayer 1 wins!");
+                            playing = 0;
+                        }
+                    }
+                }
+
+                if (board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' '){
+                    if (board[0][2] == board[1][1] && board[1][1] == board[2][0]){
+                        if (player % 2 == 1){
+                            printf("\nPlayer 2 wins!");
+                            playing = 0;
+                            }
+                        else{
+                            printf("\nPlayer 1 wins!");
+                            playing = 0;
+                        }
+                    }
+                }
+
+                //checks if there is tie
+                for (int i = 0; i < 3; i++){
+                    for (int j = 0; j < 3; j++){
+                        if (board[i][j] == ' ' && playing == 1){
+                            tie = 0;
+                        }
+                    }
+                }
+
+                if (tie == 1){
+                    printf("\nTie, no winner!");
+                    playing = 0;
+                }
+
+                tie = 1;
+
                 //terminate = 0;
             }
 
@@ -98,53 +157,17 @@ int main(){
         scanf("%d", &terminate);
 
         //restarts game if player wants to play again
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                board[i][j] = ' ';
+            }
         }
 
-
-    /*
-
-    //prompt user for game they wish to play
-
-    printf("\n================================");
-    printf("\nWELCOME TO TIC TAC TOE!");
-    printf("\n1 --- person vs. person");
-    printf("\n2 --- person vs. random computer");
-    printf("\nEnter your choice (1 or 2): ");
-
-    //read information from console 
-
-    scanf("%d", &choice);
-
-    //Begin whichever version of the game is chosen
-
-    if (choice == 1){
-        printf("\n================================");
-        printf("\nYou have entered choice 1");
-        //printf("pvp working");
-        //Have a loop that continues to display the board until a winner or tie occurs
-        while (playing == 1){
-            pvpgame();
+        playing = 1;
+        player = 1;
+        tie = 0;
         }
-    }
-    else if (choice == 2){
-        printf("\n================================");
-        printf("\nYou have entered choice 2");
-        //printf ("pve working");
-        while (playing == 1){
-            pvegame();
-        }
-    }
-    else{
-        printf("invalid input");
-    }
 
-
-    //Ends game and asks if player would like to play again
-
-
-    //restarts game if player wants to play again
-
-    */
     return 0;
 }
 
