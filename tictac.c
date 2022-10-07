@@ -119,24 +119,20 @@ int main(){
                 //checks if there is tie
                 for (int i = 0; i < 3; i++){
                     for (int j = 0; j < 3; j++){
-                        if (board[i][j] == ' ' && playing == 1){
+                        if (board[i][j] == ' '){
                             tie = 0;
                         }
                     }
                 }
-
-                if (tie == 1){
+                //if tie, end game
+                if (tie == 1 && playing == 1){
                     printf("\nTie, no winner!");
                     playing = 0;
                 }
 
                 tie = 1;
-
-                //terminate = 0;
             }
 
-
-            //terminate = 0;
         }
         else if (choice == 2){
             printf("\n================================");
