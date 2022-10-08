@@ -4,7 +4,6 @@
 #include <stdlib.h>
 
 void prntbrd();
-//void pvegame();
 
 char board[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
 int playing = 1; //1 = playing, 0 = game ended
@@ -140,7 +139,6 @@ int main(){
         else if (choice == 2){
             printf("\n================================");
             printf("\nYou have entered choice 2");
-            //printf ("pve working");
             while (playing == 1){
                 prntbrd();
 
@@ -149,9 +147,7 @@ int main(){
 
                     scanf("%d %d", &move1, &move2);
                 }
-                //printf("\nMake your move:");
 
-                //scanf("%d %d", &move1, &move2);
 
                 if(player % 2 == 1 && board[move1 - 1][move2 - 1] == ' '){
                     board[move1 - 1][move2 - 1] = 'X';
@@ -160,8 +156,6 @@ int main(){
                 }
                 else if(player % 2 == 0){
                     while (taken == 0){
-                        //time_t t;
-                        //srand((unsigned) time(&t));
 
                         move1 = rand() % 3;
                         move2 = rand() % 3;
@@ -293,18 +287,3 @@ void prntbrd(){
     printf("\n+-----------+");
 
 }
-/*
-void pvegame(){
-    printf("\nThe current status is: ");
-    printf("\n+-----------+");
-    printf("\n| %c | %c | %c |", board[0][0], board[0][1], board[0][2]);
-    printf("\n+-----------+");
-    printf("\n| %c | %c | %c |", board[1][0], board[1][1], board[1][2]);
-    printf("\n+-----------+");
-    printf("\n| %c | %c | %c |", board[2][0], board[2][1], board[2][2]);
-    printf("\n+-----------+");
-
-
-    //playing = 0;
-}
-*/
