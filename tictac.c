@@ -138,11 +138,15 @@ int main(){
             //printf ("pve working");
             while (playing == 1){
                 pvegame();
+
+                printf("\nMake your move:");
+
+                scanf("%d %d", &move1, &move2);
                 terminate = 0;
             }
         }
         else{
-            printf("invalid input");
+            printf("\ninvalid input");
         }
 
 
