@@ -66,10 +66,12 @@ int main(){
                     if (board[i][0] != ' ' && board[i][1] != ' ' && board[i][2] != ' '){
                         if (board[i][0] == board[i][1] && board[i][1] == board[i][2]){
                             if (player % 2 == 1){
+                                prntbrd();
                                 printf("\nPlayer 2 wins!");
                                 playing = 0;
                             }
                             else{
+                                prntbrd();
                                 printf("\nPlayer 1 wins!");
                                 playing = 0;
                             }
@@ -81,10 +83,12 @@ int main(){
                     if (board[0][i] != ' ' && board[1][i] != ' ' && board[2][i] != ' '){
                         if (board[0][i] == board[1][i] && board[1][i] == board[2][i]){
                             if (player % 2 == 1){
+                                prntbrd();
                                 printf("\nPlayer 2 wins!");
                                 playing = 0;
                             }
                             else{
+                                prntbrd();
                                 printf("\nPlayer 1 wins!");
                                 playing = 0;
                             }
@@ -95,10 +99,12 @@ int main(){
                 if (board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' '){
                     if (board[0][0] == board[1][1] && board[1][1] == board[2][2]){
                         if (player % 2 == 1){
+                            prntbrd();
                             printf("\nPlayer 2 wins!");
                             playing = 0;
                             }
                         else{
+                            prntbrd();
                             printf("\nPlayer 1 wins!");
                             playing = 0;
                         }
@@ -108,10 +114,12 @@ int main(){
                 if (board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' '){
                     if (board[0][2] == board[1][1] && board[1][1] == board[2][0]){
                         if (player % 2 == 1){
+                            prntbrd();
                             printf("\nPlayer 2 wins!");
                             playing = 0;
                             }
                         else{
+                            prntbrd();
                             printf("\nPlayer 1 wins!");
                             playing = 0;
                         }
@@ -128,6 +136,7 @@ int main(){
                 }
                 //if tie, end game
                 if (tie == 1 && playing == 1){
+                    prntbrd();
                     printf("\nTie, no winner!");
                     playing = 0;
                 }
@@ -179,10 +188,12 @@ int main(){
                     if (board[i][0] != ' ' && board[i][1] != ' ' && board[i][2] != ' '){
                         if (board[i][0] == board[i][1] && board[i][1] == board[i][2]){
                             if (player % 2 == 1){
+                                prntbrd();
                                 printf("\nComputer wins!");
                                 playing = 0;
                             }
                             else{
+                                prntbrd();
                                 printf("\nPlayer 1 wins!");
                                 playing = 0;
                             }
@@ -194,10 +205,12 @@ int main(){
                     if (board[0][i] != ' ' && board[1][i] != ' ' && board[2][i] != ' '){
                         if (board[0][i] == board[1][i] && board[1][i] == board[2][i]){
                             if (player % 2 == 1){
+                                prntbrd();
                                 printf("\nComputer wins!");
                                 playing = 0;
                             }
                             else{
+                                prntbrd();
                                 printf("\nPlayer 1 wins!");
                                 playing = 0;
                             }
@@ -208,10 +221,12 @@ int main(){
                 if (board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' '){
                     if (board[0][0] == board[1][1] && board[1][1] == board[2][2]){
                         if (player % 2 == 1){
+                            prntbrd();
                             printf("\nComputer wins!");
                             playing = 0;
                             }
                         else{
+                            prntbrd();
                             printf("\nPlayer 1 wins!");
                             playing = 0;
                         }
@@ -221,10 +236,12 @@ int main(){
                 if (board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' '){
                     if (board[0][2] == board[1][1] && board[1][1] == board[2][0]){
                         if (player % 2 == 1){
+                            prntbrd();
                             printf("\nComputer wins!");
                             playing = 0;
                             }
                         else{
+                            prntbrd();
                             printf("\nPlayer 1 wins!");
                             playing = 0;
                         }
@@ -241,6 +258,7 @@ int main(){
                 }
                 //if tie, end game
                 if (tie == 1 && playing == 1){
+                    prntbrd();
                     printf("\nTie, no winner!");
                     playing = 0;
                 }
