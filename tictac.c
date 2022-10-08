@@ -78,7 +78,7 @@ int main(){
                         }
                     }
                 }
-
+                //checks vertically
                 for (int i = 0; i < 3; i++){
                     if (board[0][i] != ' ' && board[1][i] != ' ' && board[2][i] != ' '){
                         if (board[0][i] == board[1][i] && board[1][i] == board[2][i]){
@@ -95,7 +95,7 @@ int main(){
                         }
                     }
                 }
-
+                //checks diagonal case 1
                 if (board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' '){
                     if (board[0][0] == board[1][1] && board[1][1] == board[2][2]){
                         if (player % 2 == 1){
@@ -110,7 +110,7 @@ int main(){
                         }
                     }
                 }
-
+                //checks diagonal case 2
                 if (board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' '){
                     if (board[0][2] == board[1][1] && board[1][1] == board[2][0]){
                         if (player % 2 == 1){
@@ -144,7 +144,7 @@ int main(){
                 tie = 1;
             }
 
-        }
+        }// player vs computer
         else if (choice == 2){
             printf("\n================================");
             printf("\nYou have entered choice 2");
@@ -157,7 +157,7 @@ int main(){
                     scanf("%d %d", &move1, &move2);
                 }
 
-
+                //if it is computers turn, makes random move
                 if(player % 2 == 1 && board[move1 - 1][move2 - 1] == ' '){
                     board[move1 - 1][move2 - 1] = 'X';
                     printf("\nGood!");
@@ -200,7 +200,7 @@ int main(){
                         }
                     }
                 }
-
+                //checks vertically
                 for (int i = 0; i < 3; i++){
                     if (board[0][i] != ' ' && board[1][i] != ' ' && board[2][i] != ' '){
                         if (board[0][i] == board[1][i] && board[1][i] == board[2][i]){
@@ -217,7 +217,7 @@ int main(){
                         }
                     }
                 }
-
+                //checks diagonal case 1
                 if (board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' '){
                     if (board[0][0] == board[1][1] && board[1][1] == board[2][2]){
                         if (player % 2 == 1){
@@ -232,7 +232,7 @@ int main(){
                         }
                     }
                 }
-
+                //checks diagonal case 2
                 if (board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' '){
                     if (board[0][2] == board[1][1] && board[1][1] == board[2][0]){
                         if (player % 2 == 1){
