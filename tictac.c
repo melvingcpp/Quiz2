@@ -42,7 +42,7 @@ int main(){
 
                 scanf("%d %d", &move1, &move2);
 
-
+                //verify user input and determine which player is which
                 if(player % 2 == 1 && board[move1 - 1][move2 - 1] == ' '){
                     board[move1 - 1][move2 - 1] = 'X';
                     printf("\nGood!");
@@ -142,6 +142,17 @@ int main(){
                 printf("\nMake your move:");
 
                 scanf("%d %d", &move1, &move2);
+
+                if(board[move1 - 1][move2 - 1] == ' '){
+                    board[move1 - 1][move2 - 1] = 'X';
+                    printf("\nGood!");
+                }
+                else{
+                    printf("\ninvalid move, please try again");
+                }
+
+
+
                 terminate = 0;
             }
         }
