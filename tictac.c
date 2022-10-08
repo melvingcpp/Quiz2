@@ -1,8 +1,10 @@
 //Tic Tac Toe game between 2 players or player vs computer
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
-void pvpgame();
-void pvegame();
+void prntbrd();
+//void pvegame();
 
 char board[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
 int playing = 1; //1 = playing, 0 = game ended
@@ -13,6 +15,9 @@ int main(){
     int choice, move1, move2; //holds the players choices and moves
     int player = 1; //keeps track of which player is making a move
     int tie = 1; // keeps track if there is a tie, 0 = no tie, 1 = tie
+    int taken = 0; //keeps track if a spot is taken for the computer's turn, 1 = not taken, 0 = taken
+    time_t t;
+    srand((unsigned) time(&t));
 
     //loop continues until user would like to stop playing
     while (terminate == 1){
@@ -36,7 +41,7 @@ int main(){
 
             //Have a loop that continues to display the board until a winner or tie occurs
             while (playing == 1){
-                pvpgame();
+                prntbrd();
 
                 printf("\nPlayer%d: make your move", player);
 
@@ -137,23 +142,120 @@ int main(){
             printf("\nYou have entered choice 2");
             //printf ("pve working");
             while (playing == 1){
-                pvegame();
+                prntbrd();
 
-                printf("\nMake your move:");
+                if(player % 2 == 1){
+                    printf("\nMake your move:");
 
-                scanf("%d %d", &move1, &move2);
+                    scanf("%d %d", &move1, &move2);
+                }
+                //printf("\nMake your move:");
 
-                if(board[move1 - 1][move2 - 1] == ' '){
+                //scanf("%d %d", &move1, &move2);
+
+                if(player % 2 == 1 && board[move1 - 1][move2 - 1] == ' '){
                     board[move1 - 1][move2 - 1] = 'X';
                     printf("\nGood!");
+                    player++;
+                }
+                else if(player % 2 == 0){
+                    while (taken == 0){
+                        //time_t t;
+                        //srand((unsigned) time(&t));
+
+                        move1 = rand() % 3;
+                        move2 = rand() % 3;
+
+                        if (board[move1][move2] == ' '){
+                            taken = 1;
+                        }
+                    }
+                    taken = 0;
+
+                    board[move1][move2] = 'O';
+                    printf("\nComputer chose %d %d", move1 + 1, move2 + 1);
+                    player--;
                 }
                 else{
                     printf("\ninvalid move, please try again");
                 }
 
+                //loops and checks if any player has won
+                for (int i = 0; i < 3; i++){
+                    if (board[i][0] != ' ' && board[i][1] != ' ' && board[i][2] != ' '){
+                        if (board[i][0] == board[i][1] && board[i][1] == board[i][2]){
+                            if (player % 2 == 1){
+                                printf("\nComputer wins!");
+                                playing = 0;
+                            }
+                            else{
+                                printf("\nPlayer 1 wins!");
+                                playing = 0;
+                            }
+                        }
+                    }
+                }
+
+                for (int i = 0; i < 3; i++){
+                    if (board[0][i] != ' ' && board[1][i] != ' ' && board[2][i] != ' '){
+                        if (board[0][i] == board[1][i] && board[1][i] == board[2][i]){
+                            if (player % 2 == 1){
+                                printf("\nComputer wins!");
+                                playing = 0;
+                            }
+                            else{
+                                printf("\nPlayer 1 wins!");
+                                playing = 0;
+                            }
+                        }
+                    }
+                }
+
+                if (board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' '){
+                    if (board[0][0] == board[1][1] && board[1][1] == board[2][2]){
+                        if (player % 2 == 1){
+                            printf("\nComputer wins!");
+                            playing = 0;
+                            }
+                        else{
+                            printf("\nPlayer 1 wins!");
+                            playing = 0;
+                        }
+                    }
+                }
+
+                if (board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' '){
+                    if (board[0][2] == board[1][1] && board[1][1] == board[2][0]){
+                        if (player % 2 == 1){
+                            printf("\nComputer wins!");
+                            playing = 0;
+                            }
+                        else{
+                            printf("\nPlayer 1 wins!");
+                            playing = 0;
+                        }
+                    }
+                }
+
+                //checks if there is tie
+                for (int i = 0; i < 3; i++){
+                    for (int j = 0; j < 3; j++){
+                        if (board[i][j] == ' '){
+                            tie = 0;
+                        }
+                    }
+                }
+                //if tie, end game
+                if (tie == 1 && playing == 1){
+                    printf("\nTie, no winner!");
+                    playing = 0;
+                }
+
+                tie = 1;
 
 
-                terminate = 0;
+
+                //terminate = 0;
             }
         }
         else{
@@ -180,7 +282,7 @@ int main(){
     return 0;
 }
 
-void pvpgame(){
+void prntbrd(){
     printf("\nThe current status is: ");
     printf("\n+-----------+");
     printf("\n| %c | %c | %c |", board[0][0], board[0][1], board[0][2]);
@@ -190,10 +292,8 @@ void pvpgame(){
     printf("\n| %c | %c | %c |", board[2][0], board[2][1], board[2][2]);
     printf("\n+-----------+");
 
-
-    //playing = 0;
 }
-
+/*
 void pvegame(){
     printf("\nThe current status is: ");
     printf("\n+-----------+");
@@ -207,3 +307,4 @@ void pvegame(){
 
     //playing = 0;
 }
+*/
